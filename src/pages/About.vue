@@ -1,5 +1,8 @@
+<script setup lang="ts">
+  import AboutContent from '../components/AboutContent.vue';
+</script>
 <template>
   <div class="max-w-screen-lg mx-auto">
-    This is the About page
+    <AboutContent/>
   </div>
 </template>

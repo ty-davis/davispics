@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import Images from '../components/Images.vue';
   import ImageScroll from '../components/ImageScroll.vue';
+  import AboutContent from '../components/AboutContent.vue';
 
 const main_images = [
   'ryker-0475.jpg',
@@ -23,5 +24,12 @@ const newborn_images = [
 </script>
 <template>
   <ImageScroll name="" :images="main_images"/>
+  <div class="mt-8 py-1 max-w-screen-lg mx-auto">
+    <span class="text-2xl">About Us</span>
+  </div>
+  <hr class="max-w-screen-xl mx-auto"/>
+  <div class="max-w-screen-lg mx-auto">
+    <AboutContent/>
+  </div>
   <!-- <Images name="Newborn" :images="newborn_images"/> -->
 </template>
