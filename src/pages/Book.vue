@@ -57,7 +57,7 @@ const submitForm = async () => {
 
       // 2. Send form data (including the token) to your backend
       try {
-        const response = await fetch('http://book.davispics.com/submit', { // Use http for local development
+        const response = await fetch('https://book.davispics.com/submit', { // Use http for local development
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
