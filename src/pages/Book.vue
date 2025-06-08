@@ -85,9 +85,9 @@ const submitForm = async () => {
 
 <template>
   <div class="max-w-screen-lg mx-auto px-4">
-    <div class="text-2xl font-semibold">
+    <h2 class="text-2xl font-semibold">
       Book with us
-    </div>
+    </h2>
     <p>
       We'd love to work with you and capture the moments that matter! Fill out this form
       and we will reach out as soon as we can!

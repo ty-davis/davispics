@@ -12,12 +12,15 @@
 </script>
 <template>
   <div>
-    <router-link to="/About" @click="handleLinkClick" :class="active('/About')" class="p-2">About</router-link>
+    <router-link to="/About" @click="handleLinkClick" :class="active('/About')" class="p-2 courier-prime-regular">About</router-link>
   </div>
   <div>
-    <router-link to="/Book" @click="handleLinkClick" :class="active('/Book')" class="p-2">Book with us</router-link>
+    <router-link to="/Book" @click="handleLinkClick" :class="active('/Book')" class="p-2 courier-prime-regular">Book with us</router-link>
   </div>
   <div>
-    <router-link to="/Portfolio" @click="handleLinkClick" :class="active('/Portfolio')" class="p-2">Portfolio</router-link>
+    <router-link to="/Portfolio" @click="handleLinkClick" :class="active('/Portfolio')" class="p-2 courier-prime-regular">Portfolio</router-link>
   </div>
 </template>
+
+<style scoped>
+</style>

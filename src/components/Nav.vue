@@ -21,7 +21,7 @@ const visible = ref(false);
     </div>
     <div class="text-4xl font-semibold">
       <router-link to="/" class="flex gap-3">
-        <span> Davis Pictures </span>
+        <h1 class="tracking-wide"> Davis Pictures </h1>
       </router-link>
     </div>
     <div class="hidden md:flex align-center">
