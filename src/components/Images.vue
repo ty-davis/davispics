@@ -21,6 +21,11 @@ defineProps<{
 </template>
 
 <style scoped>
+.imgs-container {
+  overflow-x: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
 .imgs-container img {
   flex-shrink: 0;
   max-width: none;
