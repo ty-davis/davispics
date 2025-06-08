@@ -4,14 +4,14 @@
   import AboutContent from '../components/AboutContent.vue';
 
 const main_images = [
-  'ryker-0475-small.jpg',
-  'ryker-0516-2-small.jpg',
-  'ryker-0646-small.jpg',
-  'ryker-0681-small.jpg',
-  'ryker-0941-small.jpg',
-  'ryker-0809-small.jpg',
-  'ryker-0860-2-small.jpg',
-  'ryker-1007-small.jpg',
+  'newborn-0475-small.jpg',
+  'newborn-0516-2-small.jpg',
+  'newborn-0646-small.jpg',
+  'newborn-0681-small.jpg',
+  'newborn-0941-small.jpg',
+  'newborn-0809-small.jpg',
+  'newborn-0860-2-small.jpg',
+  'newborn-1007-small.jpg',
 ]
 
 //const newborn_images = [
