@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 
 defineProps<{
   name: string,
@@ -39,7 +38,10 @@ defineProps<{
 .scroll-content img {
   flex-shrink: 0;
   max-width: none;
-  height: 400px
+  height: 300px;
+  @media only screen and (min-width: 768px) {
+    height: 400px;
+  }
 }
 
 @keyframes scroll {

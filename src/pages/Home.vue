@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import Images from '../components/Images.vue';
+  //import Images from '../components/Images.vue';
   import ImageScroll from '../components/ImageScroll.vue';
   import AboutContent from '../components/AboutContent.vue';
 
@@ -14,13 +14,13 @@ const main_images = [
   'ryker-1007.jpg',
 ]
 
-const newborn_images = [
-  'ryker-0475.jpg',
-  'ryker-0516-2.jpg',
-  'ryker-1007.jpg',
-  'ryker-0646-2.jpg',
-  'ryker-0681.jpg',
-];
+//const newborn_images = [
+//  'ryker-0475.jpg',
+//  'ryker-0516-2.jpg',
+//  'ryker-1007.jpg',
+//  'ryker-0646-2.jpg',
+//  'ryker-0681.jpg',
+//];
 </script>
 <template>
   <ImageScroll name="" :images="main_images"/>
@@ -29,7 +29,7 @@ const newborn_images = [
   </div>
   <hr class="max-w-screen-xl mx-auto"/>
   <div class="max-w-screen-lg mx-auto">
-    <AboutContent/>
+    <AboutContent bw/>
   </div>
   <!-- <Images name="Newborn" :images="newborn_images"/> -->
 </template>

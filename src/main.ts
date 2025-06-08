@@ -6,7 +6,7 @@ import router from './router';
 
 import Drawer from 'primevue/drawer';
 import Button from 'primevue/button';
-import Noir from './presets/Noir.js';
+import Noir from './presets/Noir';
 
 const app = createApp(App);
 app.use(router);
