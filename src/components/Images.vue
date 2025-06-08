@@ -2,7 +2,7 @@
 
 defineProps<{
   name: string,
-  images: {name: string, bw: boolean}
+  images: {name: string, bw: boolean}[]
 }>()
 
 </script>

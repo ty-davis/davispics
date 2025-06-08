@@ -3,7 +3,7 @@
   import ImageScroll from '../components/ImageScroll.vue';
   import AboutContent from '../components/AboutContent.vue';
 
-const main_images: {name: string, bw: boolean} = [
+const main_images: string[] = [
   'newborn-0475-small.jpg',
   'newborn-0516-2-small.jpg',
   'newborn-0646-small.jpg',
