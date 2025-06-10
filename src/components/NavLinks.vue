@@ -18,7 +18,7 @@
     <router-link to="/Book" @click="handleLinkClick" :class="active('/Book')" class="p-2 courier-prime-regular">Book with us</router-link>
   </div>
   <div>
-    <router-link to="/Portfolio" @click="handleLinkClick" :class="active('/Portfolio')" class="p-2 courier-prime-regular">Portfolio</router-link>
+    <router-link to="/Questions" @click="handleLinkClick" :class="active('/Questions')" class="p-2 courier-prime-regular">Questions</router-link>
   </div>
 </template>
 

@@ -53,7 +53,7 @@ const grad = [
 <template>
   <ImageScroll name="" :images="main_images"/>
   <div class="mt-8 py-1 max-w-screen-lg mx-auto">
-    <h2 class="text-2xl">About Us</h2>
+    <h2 class="text-2xl px-2">About Us</h2>
   </div>
   <hr class="max-w-screen-xl mx-auto"/>
   <div class="max-w-screen-lg mx-auto">
@@ -62,5 +62,14 @@ const grad = [
   <Images name="Family" :images="family_photos"/>
   <Images name="Couples" :images="couples"/>
   <Images name="Wedding" :images="wedding"/>
-  <Images name="Grad" :images="grad"/>
+  <Images name="Graduation" :images="grad"/>
+
+  <div class="max-w-screen-md mx-auto my-6 flex items-baseline gap-4 justify-center">
+    <span>
+      Any questions?
+    </span>
+    <router-link to="/Questions">
+      <Button> Get an answer </Button>
+    </router-link>
+  </div>
 </template>

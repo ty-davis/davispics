@@ -1,19 +1,16 @@
 <script setup>
-import { ref, onMounted } from 'vue';
-import InputText from 'primevue/inputtext';
-import DatePicker from 'primevue/datepicker';
-import Select from 'primevue/select';
-import Textarea from 'primevue/textarea';
-import FloatLabel from 'primevue/floatlabel';
+import { ref, onMounted, onUnmounted } from 'vue';
+import submitForm from '../common/utils.ts';
+import { useToast } from 'primevue/usetoast';
+const toast = useToast();
 
 const photoshoots = [
-  { 'name': 'Portfolio', 'code': 'portfolio' },
-  { 'name': 'Newborn', 'code': 'newborn' },
-  { 'name': 'Graduation', 'code': 'graduation' },
-  { 'name': 'Family Photos', 'code': 'family' },
-  { 'name': 'Engagements', 'code': 'engagements' },
-  { 'name': 'Bridals', 'code': 'bridals' },
-  { 'name': 'Other', 'code': 'other'},
+  { 'name': 'Newborn',             'code': 'newborn', 'price': '$100' },
+  { 'name': 'Graduation',          'code': 'graduation', 'price': '$100' },
+  { 'name': 'Family Photos',       'code': 'family', 'price': '$150' },
+  { 'name': 'Engagements/Couples', 'code': 'engagements-couples', 'price': '$150' },
+  { 'name': 'Bridals',             'code': 'bridals', 'price': '$200' },
+  { 'name': 'Other',               'code': 'other', 'price': "Let's make a deal" },
 ]
 
 const form = ref({
@@ -37,54 +34,41 @@ onMounted(() => {
   script.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`;
   script.async = true;
   script.defer = true;
+  script.id = 'recaptcha-script';
   document.head.appendChild(script)
 })
 
-function onSubmit(token) {
-  document.getElementById("booking-form").submit();
-}
+onUnmounted(() => {
+  const script = document.getElementById('recaptcha-script')
+  if (script) {
+    script.remove()
+  }
+  // Remove reCAPTCHA badge
+  const badge = document.querySelector('.grecaptcha-badge')
+  if (badge) {
+    badge.remove()
+  }
+})
 
-const submitForm = async () => {
-  loading.value = true
-  console.log("I'm here 1")
+const submitBookForm = async () => {
+  loading.value = true;
 
-  // 1. Get the reCAPTCHA token
-  grecaptcha.ready(() => {
-    console.log("I'm here 2")
-    grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'submit' }).then(async (token) => {
-      form.value.captcha = token;
-      console.log("I'm here 3")
-
-      // 2. Send form data (including the token) to your backend
-      try {
-        const response = await fetch('https://book.davispics.com/submit', { // Use http for local development
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(form.value)
-        })
-
-        if (response.ok) {
-          alert('Request sent successfully!')
-          Object.keys(form.value).forEach(key => form.value[key] = '')
-        } else {
-          const errorData = await response.text();
-          throw new Error(`Failed to send: ${errorData}`)
-        }
-      } catch (error) {
-        console.error('Submission error:', error);
-        alert(error.message)
-      } finally {
-        loading.value = false
-      }
-    });
-  });
+  var result = await submitForm('submit', form.value);
+  console.log(result);
+  if (result.status === 'success' ) {
+    console.log("SUCCESS:", result);
+    toast.add({severity: 'info', summary: 'Info', detail: 'Email sent! We will get back to you promptly.', life: 5000})
+    Object.keys(form.value).forEach(key => form.value[key] = '')
+  } else {
+    toast.add({severity: 'error', summary: 'Error', detail: `Could not connect to server, please try again later or email me directly at <a href="mailto:ty@davispics.com">ty@davispics.com</a>.`})
+  }
+  loading.value = false;
 }
 </script>
 
 <template>
   <div class="max-w-screen-lg mx-auto px-4">
+    <Toast/>
     <h2 class="text-2xl font-semibold">
       Book with us
     </h2>
@@ -93,31 +77,50 @@ const submitForm = async () => {
       and we will reach out as soon as we can!
     </p>
 
-    <form @submit.prevent="submitForm" id="booking-form">
-      <div class="my-8">
-        <FloatLabel>
-          <InputText v-model="form.name" type="text" required id="name"
-                 class="w-full md:w-96 p-2 border rounded-md"/>
-          <label for="name">Name*</label>
-        </FloatLabel>
-      </div>
-      
-      <div class="my-8">
-        <FloatLabel>
-          <InputText v-model="form.email" type="email" required id="email"
-                 class="w-full md:w-96 p-2 border rounded-md"/>
-          <label for="email">Email*</label>
-        </FloatLabel>
+
+    <form @submit.prevent="submitBookForm" id="booking-form">
+      <div class="flex flex-col md:flex-row">
+        <div>
+          <div class="my-8">
+            <FloatLabel>
+              <InputText v-model="form.name" type="text" required id="name"
+                     class="w-full md:w-96 p-2 border rounded-md"/>
+              <label for="name">Name*</label>
+            </FloatLabel>
+          </div>
+
+          <div class="my-8">
+            <FloatLabel>
+              <InputText v-model="form.email" type="email" required id="email"
+                     class="w-full md:w-96 p-2 border rounded-md"/>
+              <label for="email">Email*</label>
+            </FloatLabel>
+          </div>
+
+          <div class="my-8">
+            <FloatLabel>
+              <InputText v-model="form.phone" type="text" id="phone"
+                     class="w-full md:w-96 p-2 border rounded-md"/>
+              <label for="phone">Phone Number</label>
+            </FloatLabel>
+          </div>
+        </div>
+        <div class="w-full">
+          <div class="my-8 md:px-4 lg:px-16">
+            <h2> Prices </h2>
+            <hr/>
+            <div>
+              <template v-for="ps in photoshoots.filter(a => !(a.code === 'other'))">
+                <div class="grid grid-cols-[2fr_1fr]">
+                  <div> {{ ps.name }} </div>
+                  <div> {{ ps.price }} </div>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="my-8">
-        <FloatLabel>
-          <InputText v-model="form.phone" type="text" id="phone"
-                 class="w-full md:w-96 p-2 border rounded-md"/>
-          <label for="phone">Phone Number</label>
-        </FloatLabel>
-      </div>
-      
       <div class="my-8">
         <div>
         Preferred Date

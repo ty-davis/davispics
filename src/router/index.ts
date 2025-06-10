@@ -14,9 +14,9 @@ const router = createRouter({
       component: () => import('../pages/About.vue')
     },
     {
-      path: '/Portfolio',
-      name: 'Portfolio',
-      component: () => import('../pages/Portfolio.vue')
+      path: '/Questions',
+      name: 'Questions',
+      component: () => import('../pages/Questions.vue')
     },
     {
       path: '/Book',

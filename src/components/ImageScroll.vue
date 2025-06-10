@@ -15,10 +15,10 @@ defineProps<{
   <div class="scroll-container">
     <div class="scroll-content">
       <template v-for="image in images">
-        <img :src="`https://blob.davispics.com/${image}`"/>
+        <Image :src="`https://blob.davispics.com/${image}`" class="scroll-img" preview/>
       </template>
       <template v-for="image in images">
-        <img :src="`https://blob.davispics.com/${image}`"/>
+        <Image :src="`https://blob.davispics.com/${image}`" class="scroll-img" preview/>
       </template>
     </div>
   </div>
@@ -35,7 +35,7 @@ defineProps<{
   width: max-content;
   animation: scroll 60s linear infinite;
 }
-.scroll-content img {
+.scroll-content .scroll-img {
   flex-shrink: 0;
   max-width: none;
   height: 300px;
