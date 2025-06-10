@@ -39,7 +39,16 @@ defineProps<{
   flex-shrink: 0;
   max-width: none;
   height: 300px;
-  @media only screen and (min-width: 768px) {
+}
+
+.scroll-content .scroll-img ::v-deep(img) {
+  width: auto;
+  height: 300px;
+  object-fit: contain;
+}
+
+@media only screen and (min-width: 768px) {
+  .imgs-container .show-img ::v-deep(img) {
     height: 400px;
   }
 }

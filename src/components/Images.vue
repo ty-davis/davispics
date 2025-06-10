@@ -15,7 +15,7 @@ defineProps<{
   <div class="w-full flex justify-center">
     <div class="flex imgs-container">
       <template v-for="image in images">
-        <Image :src="`https://blob.davispics.com/${image.name}`" height="400px" :class="`${image.bw ? 'bw' : ''}`" class="show-img" preview/>
+        <Image :src="`https://blob.davispics.com/${image.name}`" :class="`${image.bw ? 'bw' : ''}`" class="show-img" preview/>
       </template>
     </div>
   </div>
@@ -27,17 +27,27 @@ defineProps<{
   overflow-x: auto;
   margin-left: auto;
   margin-right: auto;
+  display: flex;
+  align-items: flex-start;
 }
 .imgs-container .show-img {
   flex-shrink: 0;
-  max-width: none;
+  display: block;
+}
+.imgs-container .show-img ::v-deep(img) {
+  width: auto;
   height: 300px;
-  @media only screen and (min-width: 768px) {
+  object-fit: contain;
+}
+
+@media only screen and (min-width: 768px) {
+  .imgs-container .show-img ::v-deep(img) {
     height: 400px;
   }
 }
 
-.bw {
+
+.bw ::v-deep(img) {
   filter: grayscale(1);
 }
 </style>
