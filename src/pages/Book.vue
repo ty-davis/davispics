@@ -53,22 +53,40 @@ onUnmounted(() => {
 const submitBookForm = async () => {
   loading.value = true;
 
-  var result = await submitForm('submit', form.value);
-  console.log(result);
-  if (result.status === 'success' ) {
-    console.log("SUCCESS:", result);
-    toast.add({severity: 'info', summary: 'Info', detail: 'Email sent! We will get back to you promptly.', life: 5000})
-    Object.keys(form.value).forEach(key => form.value[key] = '')
-  } else {
+  try {
+    var result = await submitForm('submit', form.value);
+    console.log(result);
+    if (result.status === 'success' ) {
+      console.log("SUCCESS:", result);
+      toast.add({severity: 'info', summary: 'Info', detail: 'Email sent! We will get back to you promptly.', life: 5000})
+      Object.keys(form.value).forEach(key => form.value[key] = '')
+    } else {
+      throw new Error(result);
+    }
+  } catch (error) {
+    console.log("Error")
     toast.add({severity: 'error', summary: 'Error', detail: `Could not connect to server, please try again later or email me directly at <a href="mailto:ty@davispics.com">ty@davispics.com</a>.`})
+  } finally {
+    loading.value = false;
   }
-  loading.value = false;
 }
 </script>
 
 <template>
   <div class="max-w-screen-lg mx-auto px-4">
-    <Toast/>
+    <Toast>
+      <template #message="slotProps">
+        <div class="flex flex-column">
+          <div class="text-center">
+            <i :class="slotProps.message.icon"></i>
+            <div class="message-text text-left">
+              <span class="message-summary font-semibold">{{ slotProps.message.summary }}</span>
+              <div class="message-detail" v-html="slotProps.message.detail"></div>
+            </div>
+          </div>
+        </div>
+      </template>
+    </Toast>
     <h2 class="text-2xl font-semibold">
       Book with us
     </h2>
@@ -159,3 +177,9 @@ const submitBookForm = async () => {
     </form>
   </div>
 </template>
+<style>
+.message-detail a {
+  color: blue;
+  text-decoration: underline;
+}
+</style>
