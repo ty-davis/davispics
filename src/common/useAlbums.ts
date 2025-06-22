@@ -27,18 +27,6 @@ const allAlbums = reactive({
       { name: 'bnb-small/bnb-3-small.jpg', bw: false },
     ]
   },
-  family: {
-    name: 'Family',
-    path: '/album/Family',
-    thumbnail: 'small_couples/portfolio-fam--19-small.jpg',
-    images: [
-      { name: 'small_couples/portfolio-fam--19-small.jpg', bw: false },
-      { name: 'small_couples/portfolio-fam--13-small.jpg', bw: false },
-      { name: 'small_couples/portfolio-fam-0108-small.jpg', bw: true },
-      { name: 'small_couples/portfolio-fam-0030-small.jpg', 'bw': false},
-      { name: 'small_couples/portfolio-fam-0146-small.jpg', bw: false },
-    ]
-  },
   newborn: {
     name: 'Newborn',
     path: '/album/Newborn',
@@ -54,18 +42,6 @@ const allAlbums = reactive({
       { name: 'newborn-1007-small.jpg', bw: false }
     ]
   },
-  wedding: {
-    name: 'Wedding',
-    path: '/album/Wedding',
-    thumbnail: 'small_couples/portfolio-hailey-0212-small.jpg',
-    images: [
-      { name: 'small_couples/portfolio-hailey-0212-small.jpg', bw: false },
-      { name: 'small_couples/portfolio-hailey-0171-small.jpg', bw: true },
-      { name: 'small_couples/portfolio-hailey--4-small.jpg', bw: false },
-      { name: 'small_couples/portfolio-hailey-0196-small.jpg', bw: true },
-      { name: 'small_couples/portfolio-hailey-0376-small.jpg', bw: false },
-    ]
-  },
   graduation: {
     name: 'Graduation',
     path: '/album/Graduation',
@@ -79,7 +55,31 @@ const allAlbums = reactive({
       { name: 'small_couples/portfolio-grad-final-0429-small.jpg', 'bw': false},
       { name: 'small_couples/portfolio-grad-final-0184-small.jpg', bw: false },
     ]
-  }
+  },
+  family: {
+    name: 'Family',
+    path: '/album/Family',
+    thumbnail: 'small_couples/portfolio-fam--19-small.jpg',
+    images: [
+      { name: 'small_couples/portfolio-fam--19-small.jpg', bw: false },
+      { name: 'small_couples/portfolio-fam--13-small.jpg', bw: false },
+      { name: 'small_couples/portfolio-fam-0108-small.jpg', bw: true },
+      { name: 'small_couples/portfolio-fam-0030-small.jpg', 'bw': false},
+      { name: 'small_couples/portfolio-fam-0146-small.jpg', bw: false },
+    ]
+  },
+  wedding: {
+    name: 'Wedding',
+    path: '/album/Wedding',
+    thumbnail: 'small_couples/portfolio-hailey-0212-small.jpg',
+    images: [
+      { name: 'small_couples/portfolio-hailey-0212-small.jpg', bw: false },
+      { name: 'small_couples/portfolio-hailey-0171-small.jpg', bw: true },
+      { name: 'small_couples/portfolio-hailey--4-small.jpg', bw: false },
+      { name: 'small_couples/portfolio-hailey-0196-small.jpg', bw: true },
+      { name: 'small_couples/portfolio-hailey-0376-small.jpg', bw: false },
+    ]
+  },
 });
 
 // This function provides access to the album data.

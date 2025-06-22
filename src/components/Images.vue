@@ -11,7 +11,7 @@ defineProps<{
 <template>
 <div class="mt-8">
   <router-link :to="to">
-    <div class="bg-gray-600 text-white hover:bg-gray-500 transition">
+    <div class="bg-[#4f4f4f] text-white hover:bg-[#6b6b6b] transition">
     <h3 class="max-w-screen-lg mx-auto text-3xl font-light px-2 text-center py-2">
       {{ name }}
     </h3>
