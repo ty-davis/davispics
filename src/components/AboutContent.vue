@@ -6,7 +6,9 @@ defineProps<{
 
 <template>
   <div class="flex py-2 gap-2 flex-col-reverse md:flex md:flex-row">
-    <img :src="`https://blob.davispics.com/${bw ?? false ? 'tnt_3_bw-9613.jpg' : 'tnt_3-9613.jpg'}`" width="400px" class="mx-auto md:mx-0" alt="Ty &amp; Trish"/>
+    <div class="flex-shrink-0 md:self-center mx-auto">
+      <Image :src="`https://blob.davispics.com/${bw ?? false ? 'tnt_3_bw-9613.jpg' : 'tnt_3-9613.jpg'}`" class="max-w-[400px] mx-auto md:mx-0 object-cover aspect-[3/2]" alt="Ty &amp; Trish" preview/>
+    </div>
     <div class="flex flex-col px-2 gap-4 justify-center">
       <p>
         My name is Ty Davis. My wife Trish and I think every

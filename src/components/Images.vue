@@ -2,16 +2,21 @@
 
 defineProps<{
   name: string,
-  images: {name: string, bw: boolean}[]
+  images: {name: string, bw: boolean}[],
+  to: string
 }>()
 
 </script>
 
 <template>
 <div class="mt-8">
-  <h3 class="max-w-screen-lg mx-auto text-xl font-light px-2">
-    {{ name }}
-  </h3>
+  <router-link :to="to">
+    <div class="bg-gray-600 text-white hover:bg-gray-500 transition">
+    <h3 class="max-w-screen-lg mx-auto text-3xl font-light px-2 text-center py-2">
+      {{ name }}
+    </h3>
+    </div>
+  </router-link>
   <div class="w-full flex justify-center">
     <div class="flex imgs-container">
       <template v-for="image in images">

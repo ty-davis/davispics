@@ -22,6 +22,12 @@ const router = createRouter({
       path: '/Book',
       name: 'Book',
       component: () => import('../pages/Book.vue')
+    },
+    {
+      path: '/album/:albumName',
+      name: 'Album',
+      component: () => import('../pages/Album.vue'),
+      props: true
     }
   ]
 })

@@ -27,6 +27,21 @@ app.use(PrimeVue, {
       darkModeSelector: '.p-dark',
       cssLayer: false,
     }
+  },
+  pt: {
+    Toast: {
+      root: {
+        class: [
+          'max-w-none !w-[90vw] sm:!w-128'
+        ]
+      },
+      message: {
+        class: [
+          'w-[90vw] sm:w-auto',
+          'sm:w-[25rem]'
+        ]
+      }
+    }
   }
 });
 app.use(ToastService);
