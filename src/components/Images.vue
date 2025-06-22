@@ -17,7 +17,7 @@ defineProps<{
     </h3>
     </div>
   </router-link>
-  <div class="w-full flex justify-center">
+  <div class="w-full flex justify-center bg-[#4f4f4f] bg-gradient-to-b from-[#4f4f4f] to-[#202020]">
     <div class="flex imgs-container">
       <template v-for="image in images">
         <Image :src="`https://blob.davispics.com/${image.name}`" :class="`${image.bw ? 'bw' : ''}`" class="show-img" preview/>
