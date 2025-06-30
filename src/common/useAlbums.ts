@@ -80,6 +80,16 @@ const allAlbums = reactive({
       { name: 'small_couples/portfolio-hailey-0376-small.jpg', bw: false },
     ]
   },
+  misc: {
+    name: 'Miscellaneous',
+    path: '/album/Misc',
+    thumbnail: 'night_small/night_1-25--3-small.jpg',
+    images: [
+      { name: 'night_small/night_1-25--3-small.jpg', bw: false },
+      { name: 'night_small/night_1-25--small.jpg', bw: false },
+      { name: 'night_small/night_1-25--2-small.jpg', bw: false },
+    ]
+  }
 });
 
 // This function provides access to the album data.
