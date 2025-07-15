@@ -80,6 +80,21 @@ const allAlbums = reactive({
       { name: 'small_couples/portfolio-hailey-0376-small.jpg', bw: false },
     ]
   },
+  events: {
+    name: 'Events',
+    path: '/album/Events',
+    thumbnail: 'shindig/shindig-Shindig-2126-small.jpg',
+    images: [
+      { name: 'shindig/shindig-Shindig-2126-small.jpg', 'bw': false},
+      { name: 'shindig/shindig-Shindig-2311-small.jpg', 'bw': false},
+      { name: 'shindig/shindig-Shindig-2324-small.jpg', 'bw': false},
+      { name: 'shindig/shindig-Shindig-2387-small.jpg', 'bw': false},
+      { name: 'shindig/shindig-Shindig-2413-small.jpg', 'bw': false},
+      { name: 'shindig/shindig-Shindig-2649-small.jpg', 'bw': false},
+      { name: 'shindig/shindig-Shindig-2696-small.jpg', 'bw': false},
+      { name: 'shindig/shindig-Shindig-2757-small.jpg', 'bw': false},
+    ]
+  },
   misc: {
     name: 'Miscellaneous',
     path: '/album/Misc',
