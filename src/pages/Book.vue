@@ -8,8 +8,10 @@ const photoshoots = [
   { 'name': 'Newborn',             'code': 'newborn', 'price': '$100' },
   { 'name': 'Graduation',          'code': 'graduation', 'price': '$100' },
   { 'name': 'Family Photos',       'code': 'family', 'price': '$150' },
+  { 'name': 'Family Photos (6+)',  'code': 'family-large', 'price': '$200' },
   { 'name': 'Engagements/Couples', 'code': 'engagements-couples', 'price': '$150' },
   { 'name': 'Bridals',             'code': 'bridals', 'price': '$200' },
+  { 'name': 'Events',              'code': 'events', 'price': '$250' },
   { 'name': 'Other',               'code': 'other', 'price': "Let's make a deal" },
 ]
 
