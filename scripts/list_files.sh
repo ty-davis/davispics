@@ -27,7 +27,7 @@ while IFS= read -r file; do
   # Prepend the base directory name to the filename
   relative_path="${FOLDER_NAME}/${filename_only}"
   
-  echo "  { name: '$relative_path', 'bw': $bw},"
+  echo "      { name: '$relative_path', 'bw': $bw},"
 done < <(find "$FOLDER_PATH" -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" \) | sort)
 
 echo "];"

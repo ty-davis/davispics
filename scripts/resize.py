@@ -1,7 +1,7 @@
 import os
 from PIL import Image
-PHOTO_DIR_NAME = 'shindig'
-PHOTO_NEW_NAME = 'shindig'
+PHOTO_DIR_NAME = 'provo'
+PHOTO_NEW_NAME = 'provo'
 start_dir = os.path.join('in', PHOTO_DIR_NAME)
 end_dir = os.path.join('out', PHOTO_DIR_NAME)
 

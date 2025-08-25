@@ -61,8 +61,17 @@ const allAlbums = reactive({
     path: '/album/Family',
     thumbnail: 'small_couples/portfolio-fam--19-small.jpg',
     images: [
-      { name: 'small_couples/portfolio-fam--19-small.jpg', bw: false },
-      { name: 'small_couples/portfolio-fam--13-small.jpg', bw: false },
+      { name: 'provo/provo-9761-small.jpg', 'bw': false},
+      { name: 'provo/provo-0057-small.jpg', 'bw': false},
+      { name: 'provo/provo-9919-small.jpg', 'bw': false},
+      { name: 'provo/provo-9741-small.jpg', 'bw': false},
+      { name: 'provo/provo-9789-small.jpg', 'bw': false},
+      { name: 'provo/provo-9946-small.jpg', 'bw': false},
+      { name: 'encinitas/encinitas-2977-small.jpg', 'bw': false},
+      { name: 'encinitas/encinitas-3012-small.jpg', 'bw': false},
+      { name: 'encinitas/encinitas-3133-small.jpg', 'bw': false},
+      { name: 'encinitas/encinitas-3341-small.jpg', 'bw': false},
+      { name: 'encinitas/encinitas-3555-small.jpg', 'bw': false},
       { name: 'small_couples/portfolio-fam-0108-small.jpg', bw: true },
       { name: 'small_couples/portfolio-fam-0030-small.jpg', 'bw': false},
       { name: 'small_couples/portfolio-fam-0146-small.jpg', bw: false },
@@ -101,8 +110,11 @@ const allAlbums = reactive({
     thumbnail: 'night_small/night_1-25--3-small.jpg',
     images: [
       { name: 'night_small/night_1-25--3-small.jpg', bw: false },
-      { name: 'night_small/night_1-25--small.jpg', bw: false },
       { name: 'night_small/night_1-25--2-small.jpg', bw: false },
+      { name: 'tetons/tetons-9733-small.jpg', 'bw': false},
+      { name: 'tetons/tetons-9575-small.jpg', 'bw': false},
+      { name: 'tetons/tetons-9614-small.jpg', 'bw': false},
+      { name: 'night_small/night_1-25--small.jpg', bw: false },
     ]
   }
 });
