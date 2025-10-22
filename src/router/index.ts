@@ -40,7 +40,12 @@ const router = createRouter({
       name: 'Art2450',
       component: () => import('../pages/Art2450.vue'),
       props: true
-    }
+    },
+    {
+      path: '/HowTo',
+      name: 'HowTo',
+      component: () => import('../pages/HowTo.vue'),
+    },
   ]
 })
 

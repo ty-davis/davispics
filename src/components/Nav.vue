@@ -7,7 +7,7 @@ const visible = ref(false);
 <template>
   <Drawer v-model:visible="visible" header="Menu">
     <div class="flex flex-col gap-6 pt-8">
-      <NavLinks @close-drawer="visible = false"/>
+      <NavLinks @close-drawer="visible = false" drawer/>
     </div>
   </Drawer>
   <div class="flex justify-around w-full max-w-screen-xl mx-auto items-center py-4 mb-4 border-gray-800 border-b text-xl">
@@ -16,7 +16,10 @@ const visible = ref(false);
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
       </a>
     </div>
-    <div class="hidden md:flex justify-around gap-8">
+    <div class="hidden md:flex justify-around gap-6">
+      <a @click.stop="visible = true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      </a>
       <NavLinks/>
     </div>
     <div class="text-4xl font-semibold">
