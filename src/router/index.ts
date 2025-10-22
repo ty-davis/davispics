@@ -28,7 +28,12 @@ const router = createRouter({
       name: 'Album',
       component: () => import('../pages/Album.vue'),
       props: true
-    }
+    },
+    {
+      path: '/HowTo',
+      name: 'HowTo',
+      component: () => import('../pages/HowTo.vue'),
+    },
   ]
 })
 
