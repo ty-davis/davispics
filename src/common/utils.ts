@@ -13,7 +13,7 @@ const submitForm = async (action: string, formData: any): Promise<string> => {
 
                 // 2. Send form data (including the token) to your backend
                 try {
-                    const response = await fetch(`${import.meta.env.VITE_API_URL}/${action}`, { // Use http for local development
+                    const response = await fetch(`${import.meta.env.VITE_API_URL}/${action}`, { 
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',

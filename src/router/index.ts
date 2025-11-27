@@ -28,6 +28,12 @@ const router = createRouter({
       name: 'Album',
       component: () => import('../pages/Album.vue'),
       props: true
+    },
+    {
+      path: '/upload',
+      name: 'Upload',
+      component: () => import('../pages/Upload.vue'),
+      props: true
     }
   ]
 })
