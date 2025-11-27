@@ -9,6 +9,7 @@ const message = ref('')
 const messageType = ref<'success' | 'error' | ''>('')
 const maxDimension = ref(800)
 const folder = ref('folder1')
+const uploadedUrls = ref<string[]>([])
 
 const handleFileSelect = (event: Event) => {
   const target = event.target as HTMLInputElement
@@ -28,6 +29,7 @@ const handleFileSelect = (event: Event) => {
 
   selectedFiles.value = validFiles
   previews.value = [] // Clear existing previews
+  uploadedUrls.value = [] // Clear previous upload URLs
 
   // Create previews asynchronously
   validFiles.forEach(file => {
@@ -48,6 +50,23 @@ const removeFile = (index: number) => {
   previews.value.splice(index, 1)
 }
 
+const copyUrl = async (url: string) => {
+  try {
+    await navigator.clipboard.writeText(url)
+    message.value = 'URL copied to clipboard!'
+    messageType.value = 'success'
+    // Clear message after 2 seconds
+    setTimeout(() => {
+      if (message.value === 'URL copied to clipboard!') {
+        message.value = ''
+      }
+    }, 2000)
+  } catch (error) {
+    message.value = 'Failed to copy URL'
+    messageType.value = 'error'
+  }
+}
+
 const uploadImages = async () => {
   if (selectedFiles.value.length === 0) {
     message.value = 'Please select at least one image'
@@ -55,9 +74,18 @@ const uploadImages = async () => {
     return
   }
 
+  // Prompt for password
+  const password = prompt('Please enter the upload password:')
+  if (!password) {
+    message.value = 'Password is required for upload'
+    messageType.value = 'error'
+    return
+  }
+
   uploading.value = true
   uploadProgress.value = 0
   message.value = ''
+  uploadedUrls.value = []
 
   const formData = new FormData()
   selectedFiles.value.forEach((file) => {
@@ -65,6 +93,7 @@ const uploadImages = async () => {
   })
   formData.append('maxDimension', maxDimension.value.toString())
   formData.append('folder', folder.value)
+  formData.append('password', password)
 
   try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/upload`, {
@@ -73,6 +102,8 @@ const uploadImages = async () => {
     })
 
     if (response.ok) {
+      const result = await response.json()
+      uploadedUrls.value = result.urls || []
       message.value = 'Images uploaded successfully!'
       messageType.value = 'success'
       selectedFiles.value = []
@@ -109,7 +140,7 @@ const uploadImages = async () => {
       </label>
     </div>
 
-    <div class="max-dimension">
+    <div class="form-row">
       <label for="max-dimension">Max Dimension (px):</label>
       <input
         type="number"
@@ -121,7 +152,7 @@ const uploadImages = async () => {
       />
     </div>
 
-    <div class="max-dimension">
+    <div class="form-row">
       <label for="folder-input">Folder:</label>
       <input
         id="folder-input"
@@ -146,6 +177,15 @@ const uploadImages = async () => {
     >
       {{ uploading ? 'Uploading...' : `Upload ${selectedFiles.length} image(s)` }}
     </button>
+
+    <div v-if="uploadedUrls.length > 0" class="uploaded-urls">
+      <h3>Uploaded Images:</h3>
+      <div v-for="(url, index) in uploadedUrls" :key="index" class="url-item">
+        <img :src="url" width="100"/>
+        <input type="text" :value="url" readonly class="url-input" />
+        <button @click="copyUrl(url)" class="copy-btn">Copy</button>
+      </div>
+    </div>
 
     <div v-if="message" :class="['message', messageType]">
       {{ message }}
@@ -187,14 +227,15 @@ h1 {
   background: #0056b3;
 }
 
-.max-dimension {
+.form-row {
   margin-top: 1rem;
+  margin-bottom: 1rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.max-dimension label {
+.form-row label {
   font-weight: 500;
   color: #333;
 }
@@ -287,6 +328,57 @@ h1 {
 .upload-btn:disabled {
   background: #6c757d;
   cursor: not-allowed;
+}
+
+.uploaded-urls {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.uploaded-urls h3 {
+  margin: 0 0 1rem 0;
+  color: #333;
+  font-size: 1.25rem;
+}
+
+.url-item {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  align-items: center;
+}
+
+.url-item:last-child {
+  margin-bottom: 0;
+}
+
+.url-input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  background-color: white;
+  font-family: monospace;
+}
+
+.copy-btn {
+  padding: 0.5rem 1rem;
+  background: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background 0.3s;
+  white-space: nowrap;
+}
+
+.copy-btn:hover {
+  background: #5a6268;
 }
 
 .message {
