@@ -125,3 +125,76 @@ export function useAlbums() {
     allAlbums
   };
 }
+
+
+const project3summary = `
+
+<p>
+
+For Project 3 I found the work of Diana Nygren fascinating
+and wanted to replicate it. Here's a
+link to <a class="text-blue-500 hover:underline"
+href="https://lenscratch.com/2025/10/diana-cheren-nygren-mother-earth/"
+target="_blank">
+her album</a> which you should check out. The album
+features a technique I've never seen before and which
+I tried to imitate, and I'm quite proud of the results.
+
+</p>
+
+<p>
+
+In her album, she strictly used photos of natural scenes as
+"backgrounds", and overlaid manmade creations on top. I wanted to do
+some of the same, but decided it would be interested to take some
+manmade scenes as "backgrounds" as well. The most difficult part of this project
+was determining how to compose two shots into one, and maximizing the effect afterwards
+in post without letting one image dominate the other.
+
+</p>
+
+<p>
+
+What resulted from this project is an album I made with the intent
+of analyzing the worth of our manmade creations, and the effects
+of our actions on nature. I hope to inspire a feeling of respect for
+the natural Earth, which is a beautiful gift given to us. I hope we can
+stop to think about the process of societal growth, and the
+environmental strain of urban sprawl.
+
+</p>
+
+<p>
+
+I hope you enjoy. :)
+
+</p>
+
+`;
+
+
+const all2450Albums = reactive({
+  project3: {
+    name: 'Project 3 - Ty Davis',
+    summary: project3summary,
+    path: '/art2450/project2',
+    images: [
+      { url: 'https://blob.davispics.com/project3-full/project1final--2_1765429292.jpg' },
+      { url: 'https://blob.davispics.com/project3-full/project1final--6_1765429301.jpg' },
+      { url: 'https://blob.davispics.com/project3-full/project1final-_1765429291.jpg',
+        caption: 'This is the caption',
+      },
+      { url: 'https://blob.davispics.com/project3-full/project1final--3_1765429295.jpg' },
+      { url: 'https://blob.davispics.com/project3-full/project1final--5_1765429299.jpg' },
+      { url: 'https://blob.davispics.com/project3-full/project1final--4_1765429297.jpg' },
+      { url: 'https://blob.davispics.com/project3-full/project1final-0206_1765429303.jpg' },
+    ]
+  }
+});
+
+
+export function use2450Albums() {
+  return {
+    all2450Albums
+  };
+}

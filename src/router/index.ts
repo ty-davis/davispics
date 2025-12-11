@@ -34,6 +34,12 @@ const router = createRouter({
       name: 'Upload',
       component: () => import('../pages/Upload.vue'),
       props: true
+    },
+    {
+      path: '/art2450/:project',
+      name: 'Art2450',
+      component: () => import('../pages/Art2450.vue'),
+      props: true
     }
   ]
 })
