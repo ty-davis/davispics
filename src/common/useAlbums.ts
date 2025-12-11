@@ -126,6 +126,44 @@ export function useAlbums() {
   };
 }
 
+const project2summary = `
+<p>
+
+I chose to do the self-portrait version of project 2,
+giving me a chance to make use of my new intervalometer.
+
+</p>
+
+<p>
+
+My goal with this project was to show a bit of who I
+am. I love being outdoors, I love sports, and I love
+being creative. I grew up playing baseball and it has
+always been one of my favorite sports. While I never
+had the athleticism to make it anywhere playing baseball,
+I still feel like it's a part of who I am.
+
+</p>
+
+<p>
+
+I like to consider myself a musician, and before I got
+into photography it was certainly my main creative outlet.
+Personally, I play piano more than guitar, but the guitar
+is much more portable and made it into the shoot.
+
+</p>
+
+<p>
+
+I'm pretty happy with how this turned out, though it's certainly
+new for me to take photos of myself.
+
+</p>
+
+
+`;
+
 
 const project3summary = `
 
@@ -144,23 +182,26 @@ I tried to imitate, and I'm quite proud of the results.
 
 <p>
 
-In her album, she strictly used photos of natural scenes as
-"backgrounds", and overlaid manmade creations on top. I wanted to do
-some of the same, but decided it would be interested to take some
-manmade scenes as "backgrounds" as well. The most difficult part of this project
-was determining how to compose two shots into one, and maximizing the effect afterwards
-in post without letting one image dominate the other.
+In her album, she strictly used photos of natural scenes
+as "backgrounds", and overlaid manmade creations on
+top. I wanted to do some of the same, but decided it
+would be interested to take some manmade scenes as "backgrounds"
+as well. The most difficult part of this project was
+determining how to compose two shots into one, and maximizing
+the effect afterwards in post without letting one image
+dominate the other.
 
 </p>
 
 <p>
 
-What resulted from this project is an album I made with the intent
-of analyzing the worth of our manmade creations, and the effects
-of our actions on nature. I hope to inspire a feeling of respect for
-the natural Earth, which is a beautiful gift given to us. I hope we can
-stop to think about the process of societal growth, and the
-environmental strain of urban sprawl.
+What resulted from this project is an album I made with
+the intent of analyzing the worth of our manmade creations,
+and the effects of our actions on nature. I hope to
+inspire a feeling of respect for the natural Earth,
+which is a beautiful gift given to us. I hope we can
+stop to think about the process of societal growth,
+and the environmental strain of urban sprawl.
 
 </p>
 
@@ -177,7 +218,7 @@ const all2450Albums = reactive({
   project3: {
     name: 'Project 3 - Ty Davis',
     summary: project3summary,
-    path: '/art2450/project2',
+    path: '/art2450/project3',
     images: [
       { url: 'https://blob.davispics.com/project3-full/project1final--2_1765429292.jpg' },
       { url: 'https://blob.davispics.com/project3-full/project1final--6_1765429301.jpg' },
@@ -186,6 +227,20 @@ const all2450Albums = reactive({
       { url: 'https://blob.davispics.com/project3-full/project1final--5_1765429299.jpg' },
       { url: 'https://blob.davispics.com/project3-full/project1final--4_1765429297.jpg' },
       { url: 'https://blob.davispics.com/project3-full/project1final-0206_1765429303.jpg' },
+    ]
+  },
+  project2: {
+    name: 'Project 2 - Ty Davis',
+    summary: project2summary,
+    path: '/art2450/project2',
+    images: [
+      { url: 'https://blob.davispics.com/project2/project2final-0478.jpg' },
+      { url: 'https://blob.davispics.com/project2/project2final-0369.jpg' },
+      { url: 'https://blob.davispics.com/project2/project2final-0512.jpg' },
+      { url: 'https://blob.davispics.com/project2/project2final-0491.jpg' },
+      { url: 'https://blob.davispics.com/project2/project2final-0538.jpg' },
+      { url: 'https://blob.davispics.com/project2/project2final-0547.jpg' },
+      { url: 'https://blob.davispics.com/project2/project2final-0586.jpg' },
     ]
   }
 });
