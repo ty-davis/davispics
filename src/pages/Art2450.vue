@@ -51,14 +51,14 @@ onMounted(fetchAlbumData);
             {{ error }}
         </div>
 
-        <h2 class="text-2xl font-semibold"> {{ albumName }} </h2>
-        <div v-html="summary" class="flex flex-col gap-4 my-4"></div>
+        <h2 class="text-2xl font-semibold px-2"> {{ albumName }} </h2>
+        <div v-html="summary" class="flex flex-col gap-4 my-4 px-2"></div>
 
-        <div>
+        <div class="max-w-full">
             <template v-for="(image, index) in images">
-                <div class="mx-auto mb-32 flex justify-center">
-                    <div>
-                        <Image :src="image.url" preview :data-index="index" :imageStyle="{ maxWidth: '800px', maxHeight: '800px'}"/>
+                <div class="mx-auto mb-16 flex justify-center">
+                    <div class="flex flex-col items-center">
+                        <Image :src="image.url" preview :data-index="index" class="mx-auto image-container" imageClass="responsive-image"/>
                         <div>
                             <span> Image #{{ index + 1 }}<span v-if="image.caption">: </span> {{ image.caption }} </span>
                         </div>
@@ -73,4 +73,16 @@ onMounted(fetchAlbumData);
 
 <style scoped>
 
+.image-container :deep(img) {
+    max-width: 300px;
+    max-height: 300px;
+    object-fit: contain;
+}
+
+@media (min-width: 768px) {
+    .image-container :deep(img) {
+        max-width: 800px;
+        max-height: 800px;
+    }
+}
 </style>

@@ -181,9 +181,7 @@ const all2450Albums = reactive({
     images: [
       { url: 'https://blob.davispics.com/project3-full/project1final--2_1765429292.jpg' },
       { url: 'https://blob.davispics.com/project3-full/project1final--6_1765429301.jpg' },
-      { url: 'https://blob.davispics.com/project3-full/project1final-_1765429291.jpg',
-        caption: 'This is the caption',
-      },
+      { url: 'https://blob.davispics.com/project3-full/project1final-_1765429291.jpg', },
       { url: 'https://blob.davispics.com/project3-full/project1final--3_1765429295.jpg' },
       { url: 'https://blob.davispics.com/project3-full/project1final--5_1765429299.jpg' },
       { url: 'https://blob.davispics.com/project3-full/project1final--4_1765429297.jpg' },
