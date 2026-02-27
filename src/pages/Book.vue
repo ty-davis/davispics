@@ -5,15 +5,15 @@ import { useToast } from 'primevue/usetoast';
 const toast = useToast();
 
 const photoshoots = [
-  { 'name': 'Newborn',             'code': 'newborn', 'price': '$100' },
-  { 'name': 'Graduation',          'code': 'graduation', 'price': '$100' },
-  { 'name': 'Family Photos',       'code': 'family', 'price': '$200' },
-  { 'name': 'Family Photos (6+)',  'code': 'family-large', 'price': '$250' },
-  { 'name': 'Engagements/Couples', 'code': 'engagements-couples', 'price': '$150' },
-  { 'name': 'Maternity',           'code': 'maternity', 'price': '$150' },
-  { 'name': 'Bridals',             'code': 'bridals', 'price': '$250' },
-  { 'name': 'Wedding Day',         'code': 'wedding-day', 'price': '$400' },
-  { 'name': 'Wedding Package',     'code': 'wedding-package', 'price': '$700' },
+  { 'name': 'Newborn',             'code': 'newborn', 'price': '$150' },
+  { 'name': 'Graduation',          'code': 'graduation', 'price': '$150' },
+  { 'name': 'Family Photos',       'code': 'family', 'price': '$250' },
+  { 'name': 'Family Photos (6+)',  'code': 'family-large', 'price': '$300' },
+  { 'name': 'Maternity',           'code': 'maternity', 'price': '$200' },
+  { 'name': 'Engagements/Couples', 'code': 'engagements-couples', 'price': '$250' },
+  { 'name': 'Bridals',             'code': 'bridals', 'price': '$350' },
+  { 'name': 'Wedding Day',         'code': 'wedding-day', 'price': '$700' },
+  { 'name': 'Wedding Package',     'code': 'wedding-package', 'price': '$1200' },
   { 'name': 'Events',              'code': 'events', 'price': '$300' },
   { 'name': 'Other',               'code': 'other', 'price': "Let's make a deal" },
 ]
