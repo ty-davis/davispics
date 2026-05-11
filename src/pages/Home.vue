@@ -28,7 +28,7 @@ const main_images: string[] = [
   <div class="max-w-screen-lg mx-auto">
     <AboutContent bw/>
   </div>
-  <template v-for="(album, key, index) in allAlbums" :key="album.name">
+  <template v-for="(album, _key, index) in allAlbums" :key="album.name">
     <Images :name="album.name" :description="album.description" :images="album.images" :to="album.path" :reverse="index % 2 === 1"/>
   </template>
 
