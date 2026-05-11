@@ -68,6 +68,10 @@ const allAlbums = reactive({
     path: '/album/Family',
     thumbnail: 'small_couples/portfolio-fam--19-small.jpg',
     images: [
+      { name: 'family/CamiTysonFam26-04589_1778525829.jpg', bw: false },
+      { name: 'family/CamiTysonFam26-04469_1778525827.jpg', bw: false },
+      { name: 'family/CamiTysonFam26-04951_1778525834.jpg', bw: false },
+      { name: 'family/CamiTysonFam26-05399_1778525836.jpg', bw: false },
       { name: 'family/wigginsfam25-0016_1772158939.jpg', bw: false },
       { name: 'family/wigginsfam25-0033_1772158941.jpg', bw: false },
       { name: 'family/wigginsfam25-0038_1772158942.jpg', bw: false },

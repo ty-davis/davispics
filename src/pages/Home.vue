@@ -9,6 +9,7 @@ const { allAlbums } = useAlbums();
 const main_images: string[] = [
   'couple_6-20-2025_small/couple_6-20-2025-1952-small.webp',
   'newborn-0681-small.jpg',
+  'family/CamiTysonFam26-05399_1778525836.jpg',
   'couple_6-20-2025_small/couple_6-20-2025-1511-small.webp',
   'newborn-0646-small.jpg',
   'couple_6-20-2025_small/couple_6-20-2025-1449-small.webp',
