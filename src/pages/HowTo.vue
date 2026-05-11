@@ -191,7 +191,39 @@ onMounted(() => {
 
           <p class="my-4">
 
-            Navigate to the downloaded zip file in your Files app, it is likely in your downloads folder.
+            Navigate to the downloaded zip file in your Files app — it is likely in your Downloads folder.
+
+          </p>
+
+          <p class="my-4">
+
+            Tap and hold the zip file to bring up the dialog menu, then select
+            <strong>Uncompress</strong>. This will expand the zip into a new folder
+            right next to it.
+
+          </p>
+
+          <div class="flex justify-center">
+            <Image src="https://blob.davispics.com/tutorial/zip_folder_1778536989.png" class="iphone-image" preview/>
+          </div>
+
+          <p class="my-4">
+
+            Open that new folder, then tap the three dots (<strong>•••</strong>) in
+            the top right corner and choose <strong>Select All</strong> to select
+            every photo. Then tap the <strong>Share</strong> button (the box with
+            an arrow) and select <strong>Save [X] Images</strong>.
+
+          </p>
+
+          <div class="flex justify-center">
+            <Image src="https://blob.davispics.com/tutorial/save_folder_images_1778536988.png" class="iphone-image" preview/>
+          </div>
+
+          <p class="my-4">
+
+            Your photos will now be saved to your Photos app and ready to view,
+            share, and print at full resolution!
 
           </p>
         </TabPanel>
