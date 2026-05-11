@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, nextTick, watch, onMounted } from 'vue';
 
 const props = defineProps<{
   name: string,
@@ -12,8 +12,26 @@ const props = defineProps<{
 const frontIdx = ref(0);
 const dir = ref<'next' | 'prev'>('next');
 const showLightbox = ref(false);
+const frontImgRef = ref<HTMLImageElement | null>(null);
+const overlayStyle = ref<Record<string, string>>({});
 
 const backIdx = computed(() => (frontIdx.value + 1) % props.images.length);
+
+const syncOverlay = () => {
+  nextTick(() => {
+    const img = frontImgRef.value;
+    if (!img) return;
+    overlayStyle.value = {
+      width: img.offsetWidth + 'px',
+      height: img.offsetHeight + 'px',
+      top: img.offsetTop + 'px',
+      left: img.offsetLeft + 'px',
+    };
+  });
+};
+
+watch(frontIdx, syncOverlay);
+onMounted(syncOverlay);
 
 const goNext = () => {
   if (props.images.length <= 1) return;
@@ -51,9 +69,20 @@ const goPrev = () => {
           class="card front-card"
           :class="{ bw: images[frontIdx].bw }"
           @click="showLightbox = true"
-          title="Click to enlarge"
         >
-          <img :src="`https://blob.davispics.com/${images[frontIdx].name}`" alt="Album photo" class="rounded-lg"/>
+          <img
+            ref="frontImgRef"
+            :src="`https://blob.davispics.com/${images[frontIdx].name}`"
+            alt="Album photo"
+            class="rounded-lg"
+            @load="syncOverlay"
+          />
+          <div class="zoom-overlay" :style="overlayStyle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+            </svg>
+          </div>
         </div>
       </Transition>
     </div>
@@ -177,6 +206,24 @@ const goPrev = () => {
   cursor: pointer;
 }
 
+.zoom-overlay {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: rgba(0, 0, 0, 0);
+  opacity: 0;
+  border-radius: 0.5rem;
+  pointer-events: none;
+  transition: opacity 0.2s ease, background 0.2s ease;
+}
+
+.front-card:hover .zoom-overlay {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.35);
+}
+
 /* --- Arrow buttons --- */
 .arrow-btn {
   background: transparent;
@@ -260,7 +307,7 @@ const goPrev = () => {
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  cursor: zoom-out;
+  cursor: pointer;
 }
 
 .lightbox-img {
