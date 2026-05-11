@@ -38,7 +38,7 @@ const hashToTab = (hash: string): string | null => {
   }
 };
 
-const activeTab = ref(DEVICE_TYPES.IPHONE);
+const activeTab = ref<string>(DEVICE_TYPES.IPHONE);
 
 onMounted(() => {
   const fromHash = hashToTab(window.location.hash);

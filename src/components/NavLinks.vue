@@ -5,7 +5,7 @@ const emit = defineEmits(['close-drawer']);
 const route = useRoute();
 const showMore = ref(false);
 
-const props = withDefaults(defineProps<{
+withDefaults(defineProps<{
   drawer?: boolean;
 }>(), {
   drawer: false
