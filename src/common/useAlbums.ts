@@ -3,6 +3,7 @@ import { reactive } from 'vue';
 const allAlbums = reactive({
   couples: {
     name: 'Couples',
+    description: 'From golden-hour engagements to candid laughs, we capture the in-between moments that tell your story.',
     path: '/album/Couples',
     thumbnail: 'couple_6-20-2025_small/couple_6-20-2025-1128-small.webp',
     images: [
@@ -32,6 +33,7 @@ const allAlbums = reactive({
   },
   newborn: {
     name: 'Newborn',
+    description: 'Tiny fingers, sleepy yawns, and the quiet wonder of the first days — preserved forever.',
     path: '/album/Newborn',
     thumbnail: 'newborn-0475-small.jpg',
     images: [
@@ -51,6 +53,7 @@ const allAlbums = reactive({
   },
   graduation: {
     name: 'Graduation',
+    description: 'Celebrate the milestone. We\'ll make sure you remember exactly how it felt to cross that stage.',
     path: '/album/Graduation',
     thumbnail: 'small_couples/portfolio-grad-final-9890-small.jpg',
     images: [
@@ -65,6 +68,7 @@ const allAlbums = reactive({
   },
   family: {
     name: 'Family',
+    description: 'Genuine connection, real laughter, and the kind of photos you\'ll hang on the wall for decades.',
     path: '/album/Family',
     thumbnail: 'small_couples/portfolio-fam--19-small.jpg',
     images: [
@@ -95,6 +99,7 @@ const allAlbums = reactive({
   },
   wedding: {
     name: 'Wedding',
+    description: 'Every detail, every glance, every tear of joy — documented with care on your most important day.',
     path: '/album/Wedding',
     thumbnail: 'small_couples/portfolio-hailey-0212-small.jpg',
     images: [
@@ -107,6 +112,7 @@ const allAlbums = reactive({
   },
   events: {
     name: 'Events',
+    description: 'Whether it\'s a company gathering or a community celebration, we bring the same eye for storytelling.',
     path: '/album/Events',
     thumbnail: 'shindig/shindig-Shindig-2126-small.jpg',
     images: [
@@ -122,6 +128,7 @@ const allAlbums = reactive({
   },
   misc: {
     name: 'Miscellaneous',
+    description: 'Landscapes, nightscapes, and experiments — a collection of work that doesn\'t fit neatly anywhere else.',
     path: '/album/Misc',
     thumbnail: 'night_small/night_1-25--3-small.jpg',
     images: [
