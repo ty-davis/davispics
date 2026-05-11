@@ -12,12 +12,12 @@ const visible = ref(false);
   </Drawer>
   <div class="flex justify-around w-full max-w-screen-xl mx-auto items-center py-4 mb-4 border-gray-800 border-b text-xl">
     <div class="block md:hidden">
-      <a @click.stop="visible = true">
+      <a @click.stop="visible = true" class="cursor-pointer">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
       </a>
     </div>
     <div class="hidden md:flex justify-around gap-6">
-      <a @click.stop="visible = true">
+      <a @click.stop="visible = true" class="cursor-pointer">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
       </a>
       <NavLinks/>
