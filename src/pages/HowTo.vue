@@ -29,10 +29,20 @@ const detectDevice = (): string => {
 };
 
 
+const hashToTab = (hash: string): string | null => {
+  switch (hash.toLowerCase()) {
+    case '#desktop': return DEVICE_TYPES.BROWSER;
+    case '#iphone':  return DEVICE_TYPES.IPHONE;
+    case '#android': return DEVICE_TYPES.ANDROID;
+    default:         return null;
+  }
+};
+
 const activeTab = ref(DEVICE_TYPES.IPHONE);
 
 onMounted(() => {
-  activeTab.value = detectDevice();
+  const fromHash = hashToTab(window.location.hash);
+  activeTab.value = fromHash ?? detectDevice();
 });
 </script>
 <template>
@@ -181,14 +191,39 @@ onMounted(() => {
 
           <p class="my-4">
 
-            Navigate to the downloaded zip file in your Files app.
+            Navigate to the downloaded zip file in your Files app, it is likely in your downloads folder.
 
           </p>
         </TabPanel>
         <TabPanel value="2">
-          <p class="m-0">
-            Android
+
+          <p class="my-4">
+            On Android, downloading full resolution photos is straightforward.
+            This guide assumes you are using Chrome or your device's default browser.
           </p>
+
+          <h3 class="text-xl font-semibold my-4 border-b-1">Download a single photo</h3>
+
+          <p class="my-4">
+            Tap on the photo you would like to download to focus on it.
+            Then tap the download button in the upper right corner of the screen.
+          </p>
+
+          <div class="flex justify-center">
+            <Image src="https://blob.davispics.com/tutorial/1000002955_1778533617.PNG" class="android-image" alt="Image selected, download button visible" preview/>
+          </div>
+
+          <p class="my-4">
+            A dialog will appear asking where to save the file or confirming
+            the download. Tap <strong>Download</strong> to save the photo to
+            your device. The full resolution image will be saved to your
+            Downloads folder and should appear in your Photos or Gallery app shortly after.
+          </p>
+
+          <div class="flex justify-center">
+            <Image src="https://blob.davispics.com/tutorial/1000002954_1778533619.PNG" class="android-image" alt="Download button clicked, dialog open" preview/>
+          </div>
+
         </TabPanel>
       </TabPanels>
     </Tabs>
@@ -200,7 +235,8 @@ onMounted(() => {
 .p-tabs * {
   background: transparent !important;
 }
-.iphone-image img {
+.iphone-image img,
+.android-image img {
   max-width: 300px !important;
   width: 100% !important;
   height: auto !important;
