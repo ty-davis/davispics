@@ -7,17 +7,17 @@ const toast = useToast();
 const pricingExpanded = ref(false);
 
 const photoshoots = [
-  { 'name': 'Newborn',             'code': 'newborn', 'price': '$150', image: 'https://blob.davispics.com/newborn-0516-2-small.jpg' },
-  { 'name': 'Graduation',          'code': 'graduation', 'price': '$150', image: 'https://blob.davispics.com/small_couples/portfolio-grad-final-9890-small.jpg' },
-  { 'name': 'Family Photos',       'code': 'family', 'price': '$250', image: 'https://blob.davispics.com/family/CamiTysonFam26-04589_1778525829.jpg' },
-  { 'name': 'Family Photos (6+)',  'code': 'family-large', 'price': '$300', image: 'https://blob.davispics.com/provo/provo-9761-small.jpg' },
-  { 'name': 'Maternity',           'code': 'maternity', 'price': '$200', image: 'https://blob.davispics.com/maternity/MarynJakeMaternity26-02597_1778556658.jpg' },
-  { 'name': 'Engagements/Couples', 'code': 'engagements-couples', 'price': '$250', image: 'https://blob.davispics.com/couple_6-20-2025_small/couple_6-20-2025-1589-small.webp' },
-  { 'name': 'Bridals',             'code': 'bridals', 'price': '$350', image: 'https://blob.davispics.com/bridals/JacqueAdamBridals-4642_1778556923.jpg' },
-  { 'name': 'Wedding Day',         'code': 'wedding-day', 'price': '$700', image: 'https://blob.davispics.com/wedding/YanellyChris-1889_1778557216.jpg' },
-  { 'name': 'Wedding Package',     'code': 'wedding-package', 'price': '$1200', image: 'https://blob.davispics.com/wedding/jacque-adam-00616_1778557031.jpg' },
-  { 'name': 'Events',              'code': 'events', 'price': '$300', image: 'https://blob.davispics.com/shindig/shindig-Shindig-2757-small.jpg' },
-  { 'name': 'Other',               'code': 'other', 'price': "Let's make a deal", image: '' },
+  { name: 'Newborn',             code: 'newborn',              price: '$150',               image: 'https://blob.davispics.com/newborn-0516-2-small.jpg',                                                                    duration: '1–2 hours',  countDelivered: '30+ edited photos', description: 'Celebrate your newest arrival with soft, timeless newborn portraits. Best scheduled within the first two weeks after birth.' },
+  { name: 'Graduation',         code: 'graduation',           price: '$150',               image: 'https://blob.davispics.com/small_couples/portfolio-grad-final-9890-small.jpg',                                           duration: '1 hour',     countDelivered: '30+ edited photos', description: 'Mark this milestone with photos you\'ll treasure forever. We\'ll find the perfect locations to show off your achievement.' },
+  { name: 'Family Photos',      code: 'family',               price: '$250',               image: 'https://blob.davispics.com/family/CamiTysonFam26-04589_1778525829.jpg',                                                  duration: '1–1.5 hours',countDelivered: '50+ edited photos', description: 'Capture your family\'s unique bond in a relaxed, fun session. Great for families up to 5 people.' },
+  { name: 'Family Photos (6+)', code: 'family-large',         price: '$300',               image: 'https://blob.davispics.com/provo/provo-9761-small.jpg',                                                                  duration: '1.5–2 hours',countDelivered: '60+ edited photos', description: 'Perfect for larger families or multi-generational groups. Extra time ensures everyone looks great.' },
+  { name: 'Maternity',          code: 'maternity',            price: '$200',               image: 'https://blob.davispics.com/maternity/MarynJakeMaternity26-02597_1778556658.jpg',                                         duration: '1–1.5 hours',countDelivered: '40+ edited photos', description: 'Beautiful portraits celebrating your pregnancy. Best done between 28–36 weeks. Partners and siblings welcome.' },
+  { name: 'Engagements/Couples',code: 'engagements-couples',  price: '$250',               image: 'https://blob.davispics.com/couple_6-20-2025_small/couple_6-20-2025-1589-small.webp',                                    duration: '1–1.5 hours',countDelivered: '50+ edited photos', description: 'Romantic, candid portraits of you and your partner. Perfect for announcements, save-the-dates, or just because.' },
+  { name: 'Bridals',            code: 'bridals',              price: '$350',               image: 'https://blob.davispics.com/bridals/JacqueAdamBridals-4642_1778556923.jpg',                                               duration: '1.5–2 hours',countDelivered: '60+ edited photos', description: 'Stunning solo portraits in your wedding dress before the big day. A cherished tradition you\'ll be glad you did.' },
+  { name: 'Wedding Day',        code: 'wedding-day',          price: '$700',               image: 'https://blob.davispics.com/wedding/YanellyChris-1889_1778557216.jpg',                                                    duration: '4–6 hours',  countDelivered: '300+ edited photos',description: 'Full wedding day coverage moving with you from moment to moment. Let\'s capture every memory.' },
+  { name: 'Wedding Package',    code: 'wedding-package',      price: '$1200',              image: 'https://blob.davispics.com/wedding/jacque-adam-00616_1778557031.jpg',                                                    duration: '3 sessions',   countDelivered: '400+ edited photos', description: 'Engagements, Bridals, and the Wedding Day together in a package deal.' },
+  { name: 'Events',             code: 'events',               price: '$300',               image: 'https://blob.davispics.com/shindig/shindig-Shindig-2757-small.jpg',                                                      duration: '2–3 hours',  countDelivered: '100+ edited photos', description: 'Parties, corporate gatherings, recitals, reunions — we\'ll document all the energy and highlights, starting at $300 for a 3 hour event.' },
+  { name: 'Other',              code: 'other',                price: "Let's make a deal",  image: '',                                                                                                                         duration: 'Flexible',   countDelivered: 'Varies',             description: 'Have something unique in mind? Reach out and we\'ll put together a custom package just for you.' },
 ]
 const visible = ref(false);
 const dialogPhotoshoot = ref({});
@@ -233,9 +233,24 @@ const submitBookForm = async () => {
 
     </form>
   </div>
-  <Dialog v-model:visible="visible" modal class="min-w-96" :header="dialogPhotoshoot.name">
-    Is this working?
-    {{ dialogPhotoshoot.name }}
+  <Dialog v-model:visible="visible" modal class="min-w-96 max-w-128" :header="dialogPhotoshoot.name">
+    <div v-if="dialogPhotoshoot.image" class="mb-4">
+      <img :src="dialogPhotoshoot.image" class="w-full h-64 object-cover rounded-lg"/>
+    </div>
+    <p class="text-gray-700 mb-4">{{ dialogPhotoshoot.description }}</p>
+    <div class="flex flex-col gap-2 text-sm text-gray-600">
+      <div class="flex items-center gap-2">
+        <span class="icon-[mdi--clock-outline]"></span>
+        <span><span class="font-semibold">Duration:</span> {{ dialogPhotoshoot.duration }}</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="icon-[mdi--image-multiple-outline]"></span>
+        <span><span class="font-semibold">Photos delivered:</span> {{ dialogPhotoshoot.countDelivered }}</span>
+      </div>
+      <div class="flex items-center gap-2 mt-1">
+        <span class="font-semibold text-base">{{ dialogPhotoshoot.price }}</span>
+      </div>
+    </div>
   </Dialog>
 </template>
 <style>
