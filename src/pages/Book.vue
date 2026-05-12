@@ -19,6 +19,24 @@ const photoshoots = [
   { 'name': 'Events',              'code': 'events', 'price': '$300', image: 'https://blob.davispics.com/shindig/shindig-Shindig-2757-small.jpg' },
   { 'name': 'Other',               'code': 'other', 'price': "Let's make a deal", image: '' },
 ]
+const visible = ref(false);
+const dialogPhotoshoot = ref({});
+const openPhotoshootDialog = (name) => {
+  let found = false;
+  for (let photoshoot of photoshoots) {
+    if (name === photoshoot.name) {
+      dialogPhotoshoot.value = photoshoot;
+      found = true;
+      break;
+    }
+  }
+  if (!found) {
+    dialogPhotoshoot.value = photoshoots[0];
+  }
+  console.log(dialogPhotoshoot);
+  visible.value = true;
+}
+
 
 const form = ref({
   name: '',
@@ -166,24 +184,32 @@ const submitBookForm = async () => {
         <div class="w-full">
           <div class="my-8 md:px-4 lg:px-8 block">
             <div class="pricing-wrapper" :class="{ 'pricing-collapsed': !pricingExpanded }">
-              <div class="flex flex-row flex-wrap w-full gap-4 justify-center">
+              <div class="flex flex-col md:flex-row flex-wrap w-full gap-4 justify-center">
                 <template v-for="ps in photoshoots.filter(a => !(a.code === 'other'))">
-                  <Card style="overflow:hidden" class="w-64">
-                  <template #header>
-                    <img :src="ps.image" class="w-full h-32 object-cover"/>
-                  </template>
-                  <template #title>
-                    <span class="flex flex-col">
-                      <span class="flex space-between items-center">
-                        <span class="mr-auto"> {{ ps.price }} </span>
-                        <span class="icon-[mdi--info]"</span>
+                  <div class="hidden md:block">
+                    <Card style="overflow:hidden" class="w-48 md:w-64">
+                    <template #header>
+                      <img :src="ps.image" class="w-full h-24 md:h-32 object-cover"/>
+                    </template>
+                    <template #title>
+                      <span class="flex flex-col">
+                        <span class="flex space-between items-center">
+                          <span class="mr-auto"> {{ ps.price }} </span>
+                          <span class="icon-[mdi--info] cursor-pointer hover:text-gray-500" @click="openPhotoshootDialog(ps.name)"></span>
+                        </span>
+                        <span>
+                          {{ ps.name }}
+                        </span>
                       </span>
-                      <span>
-                        {{ ps.name }}
-                      </span>
-                    </span>
-                  </template>
-                  </Card>
+                    </template>
+                    </Card>
+                  </div>
+                  <div class="block md:hidden flex overflow-hidden rounded-xl items-center border border-gray-300">
+                    <span><img :src="ps.image" class="w-16 h-8 object-cover"></img></span>
+                    <span class="w-16 text-center">{{ ps.price }}</span>
+                    <span>{{ ps.name }}</span>
+                    <span class="icon-[mdi--info] cursor-pointer hover:text-gray-500 ml-auto mr-2" @click="openPhotoshootDialog(ps.name)"></span>
+                  </div>
                 </template>
               </div>
               <div v-if="!pricingExpanded" class="pricing-fade md:hidden">
@@ -194,12 +220,23 @@ const submitBookForm = async () => {
                 </button>
               </div>
             </div>
+            <div v-if="pricingExpanded" class="collapse-row md:hidden">
+              <button class="expand-btn" @click="pricingExpanded = false" aria-label="Hide prices">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="18 15 12 9 6 15"/>
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
     </form>
   </div>
+  <Dialog v-model:visible="visible" modal class="min-w-96" :header="dialogPhotoshoot.name">
+    Is this working?
+    {{ dialogPhotoshoot.name }}
+  </Dialog>
 </template>
 <style>
 .message-detail a {
@@ -212,23 +249,25 @@ const submitBookForm = async () => {
     position: relative;
   }
   .pricing-collapsed {
-    max-height: 300px;
+    max-height: 200px;
     overflow: hidden;
   }
 }
 
-.pricing-fade {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 120px;
-  background: linear-gradient(to bottom, transparent, white);
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding-bottom: 0.75rem;
-  pointer-events: none;
+@media (max-width: 767px) {
+  .pricing-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to bottom, transparent, white);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 0.75rem;
+    pointer-events: none;
+  }
 }
 
 .expand-btn {
@@ -251,5 +290,11 @@ const submitBookForm = async () => {
   background: #f3f4f6;
   color: #111827;
   transform: scale(1.08);
+}
+
+.collapse-row {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 0 0.25rem;
 }
 </style>

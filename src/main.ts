@@ -4,13 +4,14 @@ import App from './App.vue'
 import PrimeVue from 'primevue/config';
 import router from './router';
 
-import Card from 'primevue/card';
-import Drawer from 'primevue/drawer';
 import Button from 'primevue/button';
-import Image from 'primevue/image';
-import Noir from './presets/Noir';
-import InputText from 'primevue/inputtext';
+import Card from 'primevue/card';
 import DatePicker from 'primevue/datepicker';
+import Dialog from 'primevue/dialog';
+import Drawer from 'primevue/drawer';
+import Image from 'primevue/image';
+import InputText from 'primevue/inputtext';
+import Noir from './presets/Noir';
 import Select from 'primevue/select';
 import Textarea from 'primevue/textarea';
 import Toast from 'primevue/toast';
@@ -48,6 +49,7 @@ app.use(PrimeVue, {
 app.use(ToastService);
 app.component("Card", Card);
 app.component("Drawer", Drawer);
+app.component("Dialog", Dialog);
 app.component("Button", Button);
 app.component("Image", Image);
 
