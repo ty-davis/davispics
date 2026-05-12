@@ -4,6 +4,8 @@ import submitForm from '../common/utils.ts';
 import { useToast } from 'primevue/usetoast';
 const toast = useToast();
 
+const pricingExpanded = ref(false);
+
 const photoshoots = [
   { 'name': 'Newborn',             'code': 'newborn', 'price': '$150', image: 'https://blob.davispics.com/newborn-0516-2-small.jpg' },
   { 'name': 'Graduation',          'code': 'graduation', 'price': '$150', image: 'https://blob.davispics.com/small_couples/portfolio-grad-final-9890-small.jpg' },
@@ -163,34 +165,35 @@ const submitBookForm = async () => {
         </div>
         <div class="w-full">
           <div class="my-8 md:px-4 lg:px-8 block">
-            <div class="flex flex-row flex-wrap w-full gap-4 justify-center">
-              <template v-for="ps in photoshoots.filter(a => !(a.code === 'other'))">
-                <Card style="overflow:hidden" class="w-64">
-                <template #header>
-                  <img :src="ps.image" class="w-full h-32 object-cover"/>
-                </template>
-                <template #title>
-                  <span class="flex flex-col">
-                    <span class="flex space-between items-center">
-                      <span class="mr-auto"> {{ ps.price }} </span>
-                      <span class="icon-[mdi--info]"</span>
+            <div class="pricing-wrapper" :class="{ 'pricing-collapsed': !pricingExpanded }">
+              <div class="flex flex-row flex-wrap w-full gap-4 justify-center">
+                <template v-for="ps in photoshoots.filter(a => !(a.code === 'other'))">
+                  <Card style="overflow:hidden" class="w-64">
+                  <template #header>
+                    <img :src="ps.image" class="w-full h-32 object-cover"/>
+                  </template>
+                  <template #title>
+                    <span class="flex flex-col">
+                      <span class="flex space-between items-center">
+                        <span class="mr-auto"> {{ ps.price }} </span>
+                        <span class="icon-[mdi--info]"</span>
+                      </span>
+                      <span>
+                        {{ ps.name }}
+                      </span>
                     </span>
-                    <span>
-                      {{ ps.name }}
-                    </span>
-                  </span>
+                  </template>
+                  </Card>
                 </template>
-                </Card>
-
-
-
-
-
-              </template>
+              </div>
+              <div v-if="!pricingExpanded" class="pricing-fade md:hidden">
+                <button class="expand-btn" @click="pricingExpanded = true" aria-label="Show all prices">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </button>
+              </div>
             </div>
-          </div>
-          <div class="my-8 block md:hidden">
-            mobile
           </div>
         </div>
       </div>
@@ -202,5 +205,51 @@ const submitBookForm = async () => {
 .message-detail a {
   color: blue;
   text-decoration: underline;
+}
+
+@media (max-width: 767px) {
+  .pricing-wrapper {
+    position: relative;
+  }
+  .pricing-collapsed {
+    max-height: 300px;
+    overflow: hidden;
+  }
+}
+
+.pricing-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, white);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 0.75rem;
+  pointer-events: none;
+}
+
+.expand-btn {
+  pointer-events: all;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.expand-btn:hover {
+  background: #f3f4f6;
+  color: #111827;
+  transform: scale(1.08);
 }
 </style>
