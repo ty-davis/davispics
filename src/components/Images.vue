@@ -15,6 +15,8 @@ const showLightbox = ref(false);
 const frontImgRef = ref<HTMLImageElement | null>(null);
 const overlayStyle = ref<Record<string, string>>({});
 
+const imgUrl = (name: string) => `https://blob.davispics.com/${name}`;
+
 const backIdx = computed(() => (frontIdx.value + 1) % props.images.length);
 
 const syncOverlay = () => {
@@ -51,16 +53,10 @@ const goPrev = () => {
 
   <!-- Left: carousel -->
   <div class="carousel-side">
-    <button class="arrow-btn" @click="goPrev" aria-label="Previous photo">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="15 18 9 12 15 6"/>
-      </svg>
-    </button>
-
     <div class="card-stack">
       <!-- Back card (peek) -->
       <div class="card back-card" :class="{ bw: images[backIdx].bw }">
-        <img :src="`https://blob.davispics.com/${images[backIdx].name}`" alt="" class="rounded-lg"/>
+        <img :src="imgUrl(images[backIdx].name)" alt="" class="rounded-lg"/>
       </div>
       <!-- Front card -->
       <Transition :name="dir === 'next' ? 'card-next' : 'card-prev'">
@@ -72,7 +68,7 @@ const goPrev = () => {
         >
           <img
             ref="frontImgRef"
-            :src="`https://blob.davispics.com/${images[frontIdx].name}`"
+            :src="imgUrl(images[frontIdx].name)"
             alt="Album photo"
             class="rounded-lg"
             @load="syncOverlay"
@@ -87,11 +83,18 @@ const goPrev = () => {
       </Transition>
     </div>
 
-    <button class="arrow-btn" @click="goNext" aria-label="Next photo">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="9 18 15 12 9 6"/>
-      </svg>
-    </button>
+    <div class="arrow-row">
+      <button class="arrow-btn" @click="goPrev" aria-label="Previous photo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+      </button>
+      <button class="arrow-btn" @click="goNext" aria-label="Next photo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </button>
+    </div>
   </div>
 
   <!-- Right: title + description -->
@@ -114,7 +117,7 @@ const goPrev = () => {
       @click="showLightbox = false"
     >
       <img
-        :src="`https://blob.davispics.com/${images[frontIdx].name}`"
+        :src="imgUrl(images[frontIdx].name)"
         class="lightbox-img"
         :class="{ bw: images[frontIdx].bw }"
         @click.stop
@@ -132,7 +135,7 @@ const goPrev = () => {
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
-  padding: 2.5rem 1.5rem;
+  padding: 1.5rem 0.5rem;
   border-bottom: 1px solid #e5e7eb;
   max-width: 900px;
   margin: 0 auto;
@@ -152,22 +155,28 @@ const goPrev = () => {
 /* --- Carousel side --- */
 .carousel-side {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 1.25rem;
   flex-shrink: 0;
 }
 
+.arrow-row {
+  display: flex;
+  gap: 1rem;
+}
+
 .card-stack {
   position: relative;
-  width: 220px;
-  height: 280px;
+  width: 320px;
+  height: 350px;
   flex-shrink: 0;
 }
 
 @media (min-width: 768px) {
   .card-stack {
-    width: 280px;
-    height: 340px;
+    width: 430px;
+    height: 440px;
   }
 }
 
