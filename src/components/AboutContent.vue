@@ -7,7 +7,7 @@ defineProps<{
 <template>
   <div class="flex py-2 gap-2 flex-col-reverse md:flex md:flex-row">
     <div class="flex-shrink-0 md:self-center mx-auto">
-      <Image :src="`https://blob.davispics.com/${bw ?? false ? 'tnt_3_bw-9613.jpg' : 'tnt_3-9613.jpg'}`" class="max-w-[400px] mx-auto md:mx-0 object-cover aspect-[3/2]" alt="Ty &amp; Trish" preview/>
+      <Image :src="`https://blob.davispics.com/${bw ?? false ? 'tnt_3_bw-9613.jpg' : 'tnt_3-9613.jpg'}`" class="max-w-[400px] md:max-w-[600px] mx-auto md:mx-0 object-cover aspect-[3/2]" alt="Ty &amp; Trish" preview/>
     </div>
     <div class="flex flex-col px-2 gap-4 justify-center">
       <p>

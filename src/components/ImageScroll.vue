@@ -38,12 +38,12 @@ defineProps<{
 .scroll-content .scroll-img {
   flex-shrink: 0;
   max-width: none;
-  height: 300px;
+  height: 800px;
 }
 
 .scroll-content .scroll-img ::v-deep(img) {
   width: auto;
-  height: 300px;
+  height: 800px;
   object-fit: contain;
 }
 
