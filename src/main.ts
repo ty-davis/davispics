@@ -4,6 +4,7 @@ import App from './App.vue'
 import PrimeVue from 'primevue/config';
 import router from './router';
 
+import Card from 'primevue/card';
 import Drawer from 'primevue/drawer';
 import Button from 'primevue/button';
 import Image from 'primevue/image';
@@ -45,6 +46,7 @@ app.use(PrimeVue, {
   }
 });
 app.use(ToastService);
+app.component("Card", Card);
 app.component("Drawer", Drawer);
 app.component("Button", Button);
 app.component("Image", Image);

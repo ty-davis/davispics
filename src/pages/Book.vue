@@ -5,17 +5,17 @@ import { useToast } from 'primevue/usetoast';
 const toast = useToast();
 
 const photoshoots = [
-  { 'name': 'Newborn',             'code': 'newborn', 'price': '$150' },
-  { 'name': 'Graduation',          'code': 'graduation', 'price': '$150' },
-  { 'name': 'Family Photos',       'code': 'family', 'price': '$250' },
-  { 'name': 'Family Photos (6+)',  'code': 'family-large', 'price': '$300' },
-  { 'name': 'Maternity',           'code': 'maternity', 'price': '$200' },
-  { 'name': 'Engagements/Couples', 'code': 'engagements-couples', 'price': '$250' },
-  { 'name': 'Bridals',             'code': 'bridals', 'price': '$350' },
-  { 'name': 'Wedding Day',         'code': 'wedding-day', 'price': '$700' },
-  { 'name': 'Wedding Package',     'code': 'wedding-package', 'price': '$1200' },
-  { 'name': 'Events',              'code': 'events', 'price': '$300' },
-  { 'name': 'Other',               'code': 'other', 'price': "Let's make a deal" },
+  { 'name': 'Newborn',             'code': 'newborn', 'price': '$150', image: 'https://blob.davispics.com/newborn-0516-2-small.jpg' },
+  { 'name': 'Graduation',          'code': 'graduation', 'price': '$150', image: 'https://blob.davispics.com/small_couples/portfolio-grad-final-9890-small.jpg' },
+  { 'name': 'Family Photos',       'code': 'family', 'price': '$250', image: 'https://blob.davispics.com/family/CamiTysonFam26-04589_1778525829.jpg' },
+  { 'name': 'Family Photos (6+)',  'code': 'family-large', 'price': '$300', image: 'https://blob.davispics.com/provo/provo-9761-small.jpg' },
+  { 'name': 'Maternity',           'code': 'maternity', 'price': '$200', image: 'https://blob.davispics.com/maternity/MarynJakeMaternity26-02597_1778556658.jpg' },
+  { 'name': 'Engagements/Couples', 'code': 'engagements-couples', 'price': '$250', image: 'https://blob.davispics.com/couple_6-20-2025_small/couple_6-20-2025-1589-small.webp' },
+  { 'name': 'Bridals',             'code': 'bridals', 'price': '$350', image: 'https://blob.davispics.com/bridals/JacqueAdamBridals-4642_1778556923.jpg' },
+  { 'name': 'Wedding Day',         'code': 'wedding-day', 'price': '$700', image: 'https://blob.davispics.com/wedding/YanellyChris-1889_1778557216.jpg' },
+  { 'name': 'Wedding Package',     'code': 'wedding-package', 'price': '$1200', image: 'https://blob.davispics.com/wedding/jacque-adam-00616_1778557031.jpg' },
+  { 'name': 'Events',              'code': 'events', 'price': '$300', image: 'https://blob.davispics.com/shindig/shindig-Shindig-2757-small.jpg' },
+  { 'name': 'Other',               'code': 'other', 'price': "Let's make a deal", image: '' },
 ]
 
 const form = ref({
@@ -78,7 +78,7 @@ const submitBookForm = async () => {
 </script>
 
 <template>
-  <div class="max-w-screen-lg mx-auto px-4">
+  <div class="max-w-screen-xl mx-auto px-4">
     <Toast>
       <template #message="slotProps">
         <div class="flex flex-column">
@@ -102,12 +102,12 @@ const submitBookForm = async () => {
 
 
     <form @submit.prevent="submitBookForm" id="booking-form">
-      <div class="flex flex-col md:flex-row">
+      <div class="flex flex-col-reverse md:flex-row">
         <div>
-          <div class="my-8">
+          <div class="my-8 md:w-64 lg:w-96">
             <FloatLabel>
               <InputText v-model="form.name" type="text" required id="name"
-                     class="w-full md:w-96 p-2 border rounded-md"/>
+                     class="w-full p-2 border rounded-md"/>
               <label for="name">Name*</label>
             </FloatLabel>
           </div>
@@ -115,7 +115,7 @@ const submitBookForm = async () => {
           <div class="my-8">
             <FloatLabel>
               <InputText v-model="form.email" type="email" required id="email"
-                     class="w-full md:w-96 p-2 border rounded-md"/>
+                     class="w-full p-2 border rounded-md"/>
               <label for="email">Email*</label>
             </FloatLabel>
           </div>
@@ -123,62 +123,78 @@ const submitBookForm = async () => {
           <div class="my-8">
             <FloatLabel>
               <InputText v-model="form.phone" type="text" id="phone"
-                     class="w-full md:w-96 p-2 border rounded-md"/>
+                     class="w-full p-2 border rounded-md"/>
               <label for="phone">Phone Number</label>
             </FloatLabel>
           </div>
+
+          <div>
+          Preferred Date
+          </div>
+          <div class="flex flex-col gap-4">
+            <DatePicker v-model="form.first_datetime" type="datetime-local" required 
+                  class="w-full" placeholder="First Choice*"/>
+            <DatePicker v-model="form.second_datetime" type="datetime-local" required 
+                  class="w-full" placeholder="Second Choice*"/>
+            <DatePicker v-model="form.third_datetime" type="datetime-local"
+                  class="w-full" placeholder="Third Choice"/>
+            <hr class="lg:hidden"/>
+          </div>
+
+          <div>
+            <Select v-model="form.type" required class="w-full mt-8" :options="photoshoots" optionLabel="name" optionValue="code" placeholder="Photoshoot Type*"/>
+          </div>
+
+          <div class="my-4">
+            <FloatLabel>
+              <Textarea v-model="form.comments" id="comments" class="w-full"/>
+              <label for="comments">Comments / Questions / Requests</label>
+            </FloatLabel>
+          </div>
+          <div class="my-4">
+            <span class="block text-sm text-gray-700">* Required fields</span>
+            <Button type="submit" :disabled="loading" 
+                    class="w-32" >
+              {{ loading ? 'Loading...' : 'Send Email' }}
+            </Button>
+          </div>
+
+
         </div>
         <div class="w-full">
-          <div class="my-8 md:px-4 lg:px-16">
-            <h2> Prices </h2>
-            <hr/>
-            <div>
+          <div class="my-8 md:px-4 lg:px-8 block">
+            <div class="flex flex-row flex-wrap w-full gap-4 justify-center">
               <template v-for="ps in photoshoots.filter(a => !(a.code === 'other'))">
-                <div class="grid grid-cols-[2fr_1fr]">
-                  <div> {{ ps.name }} </div>
-                  <div> {{ ps.price }} </div>
-                </div>
+                <Card style="overflow:hidden" class="w-64">
+                <template #header>
+                  <img :src="ps.image" class="w-full h-32 object-cover"/>
+                </template>
+                <template #title>
+                  <span class="flex flex-col">
+                    <span class="flex space-between items-center">
+                      <span class="mr-auto"> {{ ps.price }} </span>
+                      <span class="icon-[mdi--info]"</span>
+                    </span>
+                    <span>
+                      {{ ps.name }}
+                    </span>
+                  </span>
+                </template>
+                </Card>
+
+
+
+
+
               </template>
             </div>
+          </div>
+          <div class="my-8 block md:hidden">
+            mobile
           </div>
         </div>
       </div>
 
-      <div class="my-8">
-        <div>
-        Preferred Date
-        </div>
-
-        <div class="flex-col flex md:flex-row gap-2">
-          <DatePicker v-model="form.first_datetime" type="datetime-local" required 
-                 class="w-full md:w-64" placeholder="First Choice*"/>
-          <DatePicker v-model="form.second_datetime" type="datetime-local" required 
-                 class="w-full md:w-64" placeholder="Second Choice*"/>
-          <DatePicker v-model="form.third_datetime" type="datetime-local"
-                 class="w-full md:w-64" placeholder="Third Choice"/>
-          <hr class="md:hidden"/>
-        </div>
-      </div>
-      
-      <div>
-        <Select v-model="form.type" required class="w-full md:w-64" :options="photoshoots" optionLabel="name" optionValue="code" placeholder="Photoshoot Type*"/>
-      </div>
-
-      <div class="my-8">
-        <FloatLabel>
-          <Textarea v-model="form.comments" id="comments" class="w-full md:w-128"/>
-          <label for="comments">Comments / Questions / Requests</label>
-        </FloatLabel>
-      </div>
-      
-      
-      <div class="my-8">
-        <span class="block text-sm text-gray-700">* Required fields</span>
-        <Button type="submit" :disabled="loading" 
-                class="w-32" >
-          {{ loading ? 'Loading...' : 'Send Email' }}
-        </Button>
-      </div>
     </form>
   </div>
 </template>
